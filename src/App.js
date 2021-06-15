@@ -20,14 +20,14 @@ const App = () => {
   },[])
 
   const fetchTasks = async() => {
-    const res = await fetch('http://localhost:8000/tasks')
+    const res = await fetch('https://amanisrajpoot-json-server.herokuapp.com/posts')
     const data = await res.json()
 
     return data
   }
 
   const fetchTask = async(id) => {
-    const res = await fetch(`http://localhost:8000/tasks/${id}`)
+    const res = await fetch(`https://amanisrajpoot-json-server.herokuapp.com/posts/${id}`)
     const data = await res.json()
 
     return data
@@ -37,7 +37,7 @@ const App = () => {
     //const id = Math.floor(Math.random() * 10000) +1
     //const newTask = {id, ...task}
     //setTasks([...tasks, newTask])
-    const res = await fetch('http://localhost:8000/tasks',{
+    const res = await fetch('https://amanisrajpoot-json-server.herokuapp.com/posts',{
       method:'POST', 
       headers: {
         'Content-type': 'application/json',
@@ -52,7 +52,7 @@ const App = () => {
   } 
     
   const deleteTask = async (id) => {
-    const res = await fetch(`http://localhost:8000/tasks/${id}`,{
+    const res = await fetch(`https://amanisrajpoot-json-server.herokuapp.com/posts/${id}`,{
       method: 'DELETE'})
     
     res.status === 200
@@ -64,7 +64,7 @@ const App = () => {
     const taskToToggle = await fetchTask(id)
     const updatedTask = {...taskToToggle, reminder: !taskToToggle.reminder}
 
-    const res = await fetch(`http://localhost:8000/tasks/${id}`,{
+    const res = await fetch(`https://amanisrajpoot-json-server.herokuapp.com/posts/${id}`,{
       method: 'PUT',
       headers: {
         'Content-type': 'application/json',
@@ -87,7 +87,7 @@ const App = () => {
           <Header onAdd = {() => setShowAddTask(!showAddTask)} 
             showAdd = {showAddTask}/>
           <Route
-          path='/' exact render={(props) =>(
+          path='/react-project-task-reminder' exact render={(props) =>(
           <>    
           {showAddTask && <AddTask onAdd = {addTask}/>}
           {tasks.length >0 ? (<Tasks tasks = {tasks} 
@@ -96,7 +96,7 @@ const App = () => {
           }
           </>)}
           />
-          <Route path='/about' component={About} />
+          <Route path='/react-project-task-reminder/about' component={About} />
           <Footer />
       </div>
     </Router>
