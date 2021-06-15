@@ -87,7 +87,7 @@ const App = () => {
           <Header onAdd = {() => setShowAddTask(!showAddTask)} 
             showAdd = {showAddTask}/>
           <Route
-          path='/react-project-task-reminder' exact render={(props) =>(
+          path='/' exact render={(props) =>(
           <>    
           {showAddTask && <AddTask onAdd = {addTask}/>}
           {tasks.length >0 ? (<Tasks tasks = {tasks} 
@@ -96,7 +96,7 @@ const App = () => {
           }
           </>)}
           />
-          <Route path='/react-project-task-reminder/about' component={About} />
+          <Route path='/about' component={About} />
           <Footer />
       </div>
     </Router>
